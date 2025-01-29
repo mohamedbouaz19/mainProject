@@ -1,0 +1,42 @@
+<mat-dialog-content class="dialog-content styled-dialog">
+  <!-- En-tête -->
+  <div class="dialog-header">
+    <h3 class="dialog-title">Attribut</h3>
+  </div>
+
+  <!-- Corps -->
+  <div class="dialog-body">
+    <!-- Clé primaire -->
+    <mat-checkbox class="styled-checkbox" [(ngModel)]="formData.id">Clé primaire</mat-checkbox>
+
+    <!-- Nom logique -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>Nom logique</mat-label>
+      <input matInput [(ngModel)]="formData.logicalName" placeholder="Entrez le nom logique" required />
+    </mat-form-field>
+
+    <!-- Type -->
+    <div class="type-section">
+      <p class="type-title">Type</p>
+      <mat-radio-group class="radio-group" [(ngModel)]="formData.type">
+        <mat-radio-button class="radio-button" value="String">String</mat-radio-button>
+        <mat-radio-button class="radio-button" value="Long">Long</mat-radio-button>
+        <mat-radio-button class="radio-button" value="Entier">Entier</mat-radio-button>
+        <mat-radio-button class="radio-button" value="Boolean">Booléen</mat-radio-button>
+        <mat-radio-button class="radio-button" value="Date">Date</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Getter et Setter -->
+    <div class="getter-setter-section">
+      <mat-checkbox class="styled-checkbox" [(ngModel)]="formData.getter">Getter</mat-checkbox>
+      <mat-checkbox class="styled-checkbox" [(ngModel)]="formData.setter">Setter</mat-checkbox>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="cancel-button" (click)="onCancel()">Annuler</button>
+    <button mat-raised-button color="primary" class="ok-button" [disabled]="!formData.logicalName" (click)="onSubmit()">OK</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

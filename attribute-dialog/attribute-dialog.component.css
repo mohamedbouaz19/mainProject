@@ -1,0 +1,72 @@
+/* Supprime la barre de défilement */
+.dialog-content {
+  overflow: hidden; /* Empêche le défilement */
+  max-height: 100%; /* Assure que tout reste visible */
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteneur pour la clé primaire et le nom */
+.key-and-name-container {
+  display: flex; /* Aligne les éléments sur une ligne */
+  align-items: center; /* Centre verticalement */
+  gap: 16px; /* Espace entre les éléments */
+  margin-bottom: 16px; /* Espace en bas */
+}
+
+/* Titre */
+.dialog-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Champ de saisie */
+.form-field {
+  flex: 1; /* Permet au champ d'occuper l'espace restant */
+}
+
+/* Section pour le type */
+.type-section {
+  margin-top: 20px;
+}
+
+.type-title {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Groupes de boutons radio */
+.radio-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.radio-button {
+  margin: 4px 0;
+}
+
+/* Cases à cocher */
+.styled-checkbox {
+  margin: 12px 0;
+  font-size: 1rem;
+}
+
+/* Boutons */
+.cancel-button {
+  color: #757575;
+}
+
+.ok-button {
+  background-color: #1976d2;
+  color: white;
+}
+
+.ok-button:disabled {
+  background-color: #b0bec5;
+}

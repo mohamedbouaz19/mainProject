@@ -1,0 +1,93 @@
+/* Style général de la boîte de dialogue */
+.mat-dialog-content {
+  min-width: 900px; /* Largeur du dialogue */
+  max-width: 90vw; /* Max 90% de la largeur de l'écran */
+  min-height: 500px; /* Hauteur minimum */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacement entre les éléments */
+}
+
+/* Conteneur du tableau */
+.table-container {
+  max-height: 400px; /* Limiter la hauteur du tableau */
+  overflow: auto; /* Permet le défilement si nécessaire */
+  border: 1px solid #ccc; /* Ajouter une bordure autour du tableau */
+  padding: 8px;
+}
+
+/* Conteneur du bouton Ajouter */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Aligner le bouton Ajouter à droite */
+}
+
+/* Style des en-têtes et des cellules de la table */
+.mat-header-cell,
+.mat-cell {
+  text-align: center; /* Centrer le texte dans les cellules */
+}
+
+/* Assurer que les éléments prennent toute la largeur disponible */
+.full-width {
+  width: 100%; 
+}
+
+/* Ajouter une classe pour les lignes sélectionnées */
+.selected {
+  background-color: #d3d3d3 !important; /* Gris clair */
+}
+
+/* Boutons dans le dialogue */
+.dialog-actions {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Boutons de confirmation et annulation */
+button.mat-button {
+  min-width: 120px;
+  font-size: 14px;
+  font-weight: bold;
+  
+}
+
+/* Style du champ de saisie de texte */
+.form-container .mat-form-field {
+  margin-bottom: 16px; /* Espacement entre les champs de formulaire */
+}
+
+/* Style du bouton Ajouter */
+button.mat-raised-button {
+  margin-top: 20px;
+}
+mat-dialog-actions {
+  display: flex;  /* Utiliser Flexbox pour aligner les boutons */
+  justify-content: center;  /* Centrer horizontalement les boutons */
+  gap: 16px;  /* Ajouter un espace entre les boutons */
+}
+
+mat-dialog-actions button {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+mat-dialog-actions .btn.cancel {
+  background-color: #f44336;
+  color: white;
+}
+
+mat-dialog-actions .btn.confirm {
+  background-color: #3f51b5;
+  color: white;
+}
+
+mat-dialog-actions button:hover {
+  opacity: 0.8;
+}
+
+mat-dialog-actions button:focus {
+  outline: none;
+}

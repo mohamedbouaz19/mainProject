@@ -1,0 +1,62 @@
+<div class="container">
+    <input type="checkbox" id="check">
+    
+    <div class="login form">
+      <header>Login</header>
+      <form>
+        <input 
+          type="email" 
+          name="loginEmail"
+          placeholder="Enter your email" 
+          [(ngModel)]="loginObj.email">
+        <input 
+          type="password" 
+          name="loginPassword"
+          placeholder="Enter your password" 
+          [(ngModel)]="loginObj.password">
+        <a href="#">Forgot password?</a>
+        <input 
+          type="button" 
+          class="button" 
+          value="Login" 
+          (click)="onLogin()">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+          <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+  
+    <div class="registration form">
+      <header>Signup</header>
+      <form>
+        <input 
+          type="email" 
+          name="signupEmail"
+          placeholder="Enter your email" 
+          [(ngModel)]="signupObj.email">
+        <input 
+          type="password" 
+          name="signupPassword"
+          placeholder="Create a password" 
+          [(ngModel)]="signupObj.password">
+        <input 
+          type="password" 
+          name="signupConfirm"
+          placeholder="Confirm your password" 
+          [(ngModel)]="signupObj.confirm">
+        <input 
+          type="button" 
+          class="button" 
+          value="Signup" 
+          (click)="onSignUp()">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+          <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+  

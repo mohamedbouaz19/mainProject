@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography dialog-content">
+    <div class="form-container">
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput [(ngModel)]="className" placeholder="Entrez le nom" />
+      </mat-form-field>
+  
+      <div class="table-container">
+        <table mat-table [dataSource]="tableData" class="mat-elevation-z8 full-width">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Clé</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon *ngIf="element.id" color="primary">key</mat-icon>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="conceptualName">
+            <th mat-header-cell *matHeaderCellDef>Nom conceptuel</th>
+            <td mat-cell *matCellDef="let element">{{ element.conceptualName || '...' }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="logicalName">
+            <th mat-header-cell *matHeaderCellDef>Nom logique</th>
+            <td mat-cell *matCellDef="let element">{{ element.logicalName || '...' }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let element">{{ element.type || '...' }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="editRow(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteRow(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  
+        <button mat-button color="accent" (click)="addRow()">Ajouter un attribut</button>
+      </div>
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button mat-button (click)="closeDialogWithData()">Enregistrer</button>
+    <button mat-button (click)="dialogRef.close()">Annuler</button>
+  </mat-dialog-actions>
