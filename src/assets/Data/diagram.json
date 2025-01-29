@@ -1,0 +1,31 @@
+{
+    "classes": [
+      {
+        "name": "Class1",
+        "attributes": [
+          { "name": "field1", "type": "string", "getter": true, "setter": true },
+          { "name": "field2", "type": "int", "getter": true, "setter": false }
+        ],
+        "methods": [
+          { "name": "getField1", "returnType": "string" },
+          { "name": "setField1", "returnType": "void" }
+        ],
+        "position": { "x": 100, "y": 200 }
+      },
+      {
+        "name": "Class2",
+        "attributes": [
+          { "name": "fieldA", "type": "boolean", "getter": true, "setter": true }
+        ],
+        "position": { "x": 400, "y": 200 }
+      }
+    ],
+    "relations": [
+      {
+        "source": "Class1",
+        "target": "Class2",
+        "cardinality": { "start": "1", "end": "N" }
+      }
+    ]
+  }
+  
