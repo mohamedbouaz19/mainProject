@@ -10,11 +10,14 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import Konva from 'konva';
 import { DialogComponent } from '../dialog/dialog.component';
 import { CardinalityDialogComponent } from '../cardinality-dialog/cardinality-dialog.component';
+import { ClassService } from 'src/app/class.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    HttpClientModule,
     MatCardModule,
     MatFormFieldModule,
     DragDropModule,
@@ -38,7 +41,7 @@ export class HomeComponent implements AfterViewInit {
   private lines: Konva.Line[] = []; // Tableau pour stocker les lignes
   private shapes: Konva.Group[] = []; // Tableau pour stocker les groupes de formes
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,private classService: ClassService) {}
 
   ngOnInit(): void {
     const containerElement = this.stageContainer.nativeElement;
@@ -188,6 +191,32 @@ export class HomeComponent implements AfterViewInit {
   stopDrawing(): void {
     this.currentGroup = null;
   }
+  saveClasses(): void {
+    this.shapes.forEach((shape) => {
+      const classNameText = shape.findOne((node) => node.getClassName() === 'Text') as Konva.Text;
+      const attributesText = shape.findOne((node) => node.name() === 'attributesText') as Konva.Text;
+  
+      const className = classNameText?.text().trim() || 'Unnamed Class';
+      
+      const attributes = attributesText?.text().split('\n').map(attr => {
+        const parts = attr.replace('+ ', '').split(':').map(s => s.trim());
+        return (parts.length === 2 && parts[0]) ? { fieldName: parts[0], fieldType: parts[1] } : null;
+      }).filter(attr => attr !== null); // Éliminer les valeurs nulles
+  
+      const classData = {
+        name: className,
+        attributes: attributes
+      };
+  
+      console.log('Données envoyées :', JSON.stringify(classData, null, 2));
+      this.classService.createClass(classData).subscribe({
+        next: (response) => console.log('Classe sauvegardée avec succès :', response),
+        error: (error) => console.error('Erreur lors de la sauvegarde :', error)
+      });
+    });
+  }
+  
+
 
   drawLineBetweenShapes(startShape: Konva.Group, endShape: Konva.Group): void {
     const startRect = startShape.findOne('Rect') as Konva.Rect;
@@ -235,7 +264,6 @@ export class HomeComponent implements AfterViewInit {
       //const associationName = "Association Name";  // Or use some dynamic value if necessary
 
   
-      const associationName = "Association Name";  // Or use some dynamic value if necessary
 
       const associationNameText = new Konva.Text({
         text: 'associationName',
